@@ -23,20 +23,14 @@
     </div>
   </div>
 </div>
-
-<!-- ================= CHANGE GOAL BUTTON ================= -->
 <button *ngIf="goal" class="change-goal-btn" (click)="resetGoal()">
   ← Change Fitness Goal
 </button>
-
-<!-- ================= USER INFO ================= -->
 <div *ngIf="goal" class="user-info">
   <p><strong>Name:</strong> {{ userName }}</p>
   <p><strong>Weight:</strong> {{ weight }} kg</p>
   <p><strong>Current Goal:</strong> {{ goal | titlecase }}</p>
 </div>
-
-<!-- ================= WEIGHT LOSS ================= -->
 <section *ngIf="goal === 'weight_loss'" class="learn-section">
 
   <h2> Weight Loss Learning Path</h2>
@@ -87,8 +81,6 @@
 
   </div>
 </section>
-
-<!-- ================= MUSCLE GAIN ================= -->
 <section *ngIf="goal === 'muscle_gain'" class="learn-section">
 
   <h2> Muscle Gain Learning Path</h2>
@@ -136,8 +128,6 @@
 
   </div>
 </section>
-
-<!-- ================= MAINTENANCE ================= -->
 <section *ngIf="goal === 'maintenance'" class="learn-section">
 
   <h2> Fitness Maintenance Learning Path</h2>
