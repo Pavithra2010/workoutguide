@@ -1,47 +1,186 @@
-<div class="learning-container">
+<!-- ================= GOAL SELECTION ================= -->
+<div *ngIf="!goal" class="goal-selection">
 
-  <!-- TABS -->
-  <div class="tabs">
-    <button (click)="setTab('fitness')" [class.active]="activeTab==='fitness'">🏋️ Fitness</button>
-    <button (click)="setTab('nutrition')" [class.active]="activeTab==='nutrition'">🍎 Nutrition</button>
-    <button (click)="setTab('hydration')" [class.active]="activeTab==='hydration'">💧 Hydration</button>
-    <button (click)="setTab('research')" [class.active]="activeTab==='research'">📚 Research</button>
-  </div>
+  <h2> Choose Your Fitness Goal</h2>
+  <p class="subtitle">
+    Select a goal to unlock personalized learning content and expert guidance
+  </p>
 
-  <!-- FITNESS -->
-  <div *ngIf="activeTab==='fitness'" class="grid">
-    <div class="card" *ngFor="let c of fitnessConcepts">
-      <h3>{{ c.title }}</h3>
-      <p class="summary">{{ c.summary }}</p>
-      <p class="detail">{{ c.detail }}</p>
+  <div class="goal-grid">
+    <div class="goal-card" (click)="selectGoal('weight_loss')">
+      <h3> Weight Loss</h3>
+      <p>Improve calorie balance, activity & lifestyle habits</p>
+    </div>
+
+    <div class="goal-card" (click)="selectGoal('muscle_gain')">
+      <h3> Muscle Gain</h3>
+      <p>Build strength, muscle consistency & recovery</p>
+    </div>
+
+    <div class="goal-card" (click)="selectGoal('maintenance')">
+      <h3> Maintenance</h3>
+      <p>Sustain fitness, energy & mental well-being</p>
     </div>
   </div>
-
-  <!-- NUTRITION -->
-  <div *ngIf="activeTab==='nutrition'" class="grid">
-    <div class="card" *ngFor="let c of nutritionConcepts">
-      <h3>{{ c.title }}</h3>
-      <p class="summary">{{ c.summary }}</p>
-      <p class="detail">{{ c.detail }}</p>
-    </div>
-  </div>
-
-  <!-- HYDRATION -->
-  <div *ngIf="activeTab==='hydration'" class="grid">
-    <div class="card" *ngFor="let c of hydrationConcepts">
-      <h3>{{ c.title }}</h3>
-      <p class="summary">{{ c.summary }}</p>
-      <p class="detail">{{ c.detail }}</p>
-    </div>
-  </div>
-
-  <!-- RESEARCH -->
-  <div *ngIf="activeTab==='research'" class="grid">
-    <div class="card" *ngFor="let c of researchConcepts">
-      <h3>{{ c.title }}</h3>
-      <p class="summary">{{ c.summary }}</p>
-      <p class="detail">{{ c.detail }}</p>
-    </div>
-  </div>
-
 </div>
+
+<!-- ================= CHANGE GOAL BUTTON ================= -->
+<button *ngIf="goal" class="change-goal-btn" (click)="resetGoal()">
+  ← Change Fitness Goal
+</button>
+
+<!-- ================= USER INFO ================= -->
+<div *ngIf="goal" class="user-info">
+  <p><strong>Name:</strong> {{ userName }}</p>
+  <p><strong>Weight:</strong> {{ weight }} kg</p>
+  <p><strong>Current Goal:</strong> {{ goal | titlecase }}</p>
+</div>
+
+<!-- ================= WEIGHT LOSS ================= -->
+<section *ngIf="goal === 'weight_loss'" class="learn-section">
+
+  <h2> Weight Loss Learning Path</h2>
+  <p class="intro">
+    Weight loss is a gradual process focused on sustainable habits, not quick fixes.
+    This section explains *why* certain practices work.
+  </p>
+
+  <h3> Learning Videos</h3>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/UBMk30rjy0o" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/ml6cT4AZdqI" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/Xyd_fa5zoEU" allowfullscreen></iframe>
+  </div>
+
+  <h3> Key Learning Concepts</h3>
+  <div class="advice-grid">
+
+    <div class="advice-card">
+      <h4>Energy Balance</h4>
+      <p>
+        Fat loss occurs when the body uses more energy than it consumes over time.
+        Consistency matters more than intensity.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Movement Beyond Exercise</h4>
+      <p>
+        Daily activities such as walking, standing, and reducing sitting time
+        significantly influence long-term results.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Hydration & Appetite</h4>
+      <p>
+        Proper hydration supports digestion and helps regulate hunger cues naturally.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Sleep & Recovery</h4>
+      <p>
+        Quality sleep supports hormonal balance and improves long-term fat management.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MUSCLE GAIN ================= -->
+<section *ngIf="goal === 'muscle_gain'" class="learn-section">
+
+  <h2> Muscle Gain Learning Path</h2>
+  <p class="intro">
+    Muscle gain is a result of progressive training, adequate nutrition,
+    and sufficient recovery.
+  </p>
+
+  <h3> Learning Videos</h3>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/U0bhE67HuDY" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/2tM1LFFxeKg" allowfullscreen></iframe>
+  </div>
+
+  <h3> Key Learning Concepts</h3>
+  <div class="advice-grid">
+
+    <div class="advice-card">
+      <h4>Progressive Overload</h4>
+      <p>
+        Gradually increasing resistance challenges muscles and stimulates adaptation.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Protein & Recovery</h4>
+      <p>
+        Protein supports muscle repair and maintenance after strength training.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Compound Movements</h4>
+      <p>
+        Multi-joint exercises improve efficiency and overall strength development.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Rest Days</h4>
+      <p>
+        Muscles grow during recovery, making rest an essential part of training.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MAINTENANCE ================= -->
+<section *ngIf="goal === 'maintenance'" class="learn-section">
+
+  <h2> Fitness Maintenance Learning Path</h2>
+  <p class="intro">
+    Maintenance focuses on sustaining fitness levels, energy, and mental balance
+    through realistic routines.
+  </p>
+
+  <h3> Learning Video</h3>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/UBMk30rjy0o" allowfullscreen></iframe>
+  </div>
+
+  <h3> Key Learning Concepts</h3>
+  <div class="advice-grid">
+
+    <div class="advice-card">
+      <h4>Balanced Activity</h4>
+      <p>
+        Combining strength, cardio, and flexibility supports long-term fitness.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Habit Sustainability</h4>
+      <p>
+        Fitness is maintained through routines that are enjoyable and realistic.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Mental Well-Being</h4>
+      <p>
+        Stress management and positive mindset influence consistency.
+      </p>
+    </div>
+
+    <div class="advice-card">
+      <h4>Adaptability</h4>
+      <p>
+        Fitness routines should evolve with lifestyle changes and personal needs.
+      </p>
+    </div>
+
+  </div>
+</section>
