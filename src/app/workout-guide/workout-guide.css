@@ -37,7 +37,6 @@
   border-radius: 20px;
   cursor: pointer;
 }
-
 .user-info {
   max-width: 900px;
   margin: 10px auto 30px;
@@ -45,12 +44,10 @@
   padding: 16px;
   border-radius: 12px;
 }
-
 .learn-section {
   max-width: 1000px;
   margin: 40px auto;
 }
-
 .intro {
   color: #334155;
   margin-bottom: 20px;
