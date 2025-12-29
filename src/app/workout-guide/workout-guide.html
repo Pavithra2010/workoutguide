@@ -1,0 +1,47 @@
+<div class="learning-container">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button (click)="setTab('fitness')" [class.active]="activeTab==='fitness'">🏋️ Fitness</button>
+    <button (click)="setTab('nutrition')" [class.active]="activeTab==='nutrition'">🍎 Nutrition</button>
+    <button (click)="setTab('hydration')" [class.active]="activeTab==='hydration'">💧 Hydration</button>
+    <button (click)="setTab('research')" [class.active]="activeTab==='research'">📚 Research</button>
+  </div>
+
+  <!-- FITNESS -->
+  <div *ngIf="activeTab==='fitness'" class="grid">
+    <div class="card" *ngFor="let c of fitnessConcepts">
+      <h3>{{ c.title }}</h3>
+      <p class="summary">{{ c.summary }}</p>
+      <p class="detail">{{ c.detail }}</p>
+    </div>
+  </div>
+
+  <!-- NUTRITION -->
+  <div *ngIf="activeTab==='nutrition'" class="grid">
+    <div class="card" *ngFor="let c of nutritionConcepts">
+      <h3>{{ c.title }}</h3>
+      <p class="summary">{{ c.summary }}</p>
+      <p class="detail">{{ c.detail }}</p>
+    </div>
+  </div>
+
+  <!-- HYDRATION -->
+  <div *ngIf="activeTab==='hydration'" class="grid">
+    <div class="card" *ngFor="let c of hydrationConcepts">
+      <h3>{{ c.title }}</h3>
+      <p class="summary">{{ c.summary }}</p>
+      <p class="detail">{{ c.detail }}</p>
+    </div>
+  </div>
+
+  <!-- RESEARCH -->
+  <div *ngIf="activeTab==='research'" class="grid">
+    <div class="card" *ngFor="let c of researchConcepts">
+      <h3>{{ c.title }}</h3>
+      <p class="summary">{{ c.summary }}</p>
+      <p class="detail">{{ c.detail }}</p>
+    </div>
+  </div>
+
+</div>
